@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Robux</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         /* Popup Notification Styles */
         #popupNotification {
@@ -22,151 +24,29 @@
             z-index: 9999;
             animation: slideIn 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
         }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; transform: translateX(100%); }
-        }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateX(100%); } }
 
         /* General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Kumbh Sans", sans-serif;
-        }
-
-        body {
-            background-color: #181818;
-            color: #fff;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            background-color: #181818;
-            border-bottom: 1px solid #c7cbce;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo img {
-            width: 30px;
-        }
-
-        .logo span {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li {
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        nav ul li:hover,
-        nav ul li.active {
-            color: #00b06f;
-        }
-
-        .middle {
-            width: 70%;
-            margin: 30px auto;
-            height: 168px;
-            background-image: linear-gradient(0deg, rgba(39, 39, 46, 0.5), rgba(39, 39, 46, 0.5)), url('/images/bp.png');
-            background-position: center;
-            background-size: cover;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .middle h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .middle p {
-            font-size: 16px;
-            opacity: 0.9;
-            max-width: 500px;
-        }
-
-        .box_con {
-            margin: 0 auto;
-            background-color: #242424;
-            min-height: 163px;
-            width: 70%;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px 20px;
-            border: none;
-            background: #f2f4f5;
-            border-radius: 8px;
-            outline: none;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-
-        button {
-            background: #00b06f;
-            border: none;
-            color: #fff;
-            padding: 12px 40px;
-            border-radius: 8px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background: #009d5f;
-            transform: translateY(-2px);
-        }
-
-        .box2, .box3, .box4 {
-            display: none;
-        }
-
-        h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        h3 span {
-            color: #00b06f;
-            font-weight: bold;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Kumbh Sans", sans-serif; }
+        body { background-color: #181818; color: #fff; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: #181818; border-bottom: 1px solid #c7cbce; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { width: 30px; }
+        .logo span { font-size: 20px; font-weight: bold; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li { color: #ccc; cursor: pointer; transition: color 0.3s; }
+        nav ul li:hover, nav ul li.active { color: #00b06f; }
+        .middle { width: 70%; margin: 30px auto; height: 168px; background-image: linear-gradient(0deg, rgba(39, 39, 46, 0.5), rgba(39, 39, 46, 0.5)), url('/images/bp.png'); background-position: center; background-size: cover; border-radius: 12px; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; }
+        .middle h2 { font-size: 32px; margin-bottom: 10px; }
+        .middle p { font-size: 16px; opacity: 0.9; max-width: 500px; }
+        .box_con { margin: 0 auto; background-color: #242424; min-height: 163px; width: 70%; padding: 30px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); position: relative; }
+        input { width: 100%; padding: 15px 20px; border: none; background: #f2f4f5; border-radius: 8px; outline: none; font-size: 16px; margin-top: 15px; }
+        button { background: #00b06f; border: none; color: #fff; padding: 12px 40px; border-radius: 8px; font-weight: 600; letter-spacing: 1px; font-size: 16px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
+        button:hover { background: #009d5f; transform: translateY(-2px); }
+        .box2, .box3, .box4 { display: none; }
+        h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
+        h3 span { color: #00b06f; font-weight: bold; }
 
         /* Loading Animation Styles */
         .folding { margin: 20px auto; width: 100px; height: 100px; position: relative; transform: rotateZ(45deg); }
@@ -193,47 +73,38 @@
         .robux_total span { font-weight: 600; }
 
         /* --- STYLES FOR VERIFICATION MODAL --- */
-        #verificationModal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
+        #verificationModal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; }
+        .verification-container { text-align: center; background-color: #fff; padding: 25px; border-radius: 15px; width: 90%; max-width: 450px; margin: auto; }
+        .verification-header { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        #modalLogo { max-width: 100%; height: auto; max-height: 120px; }
+        .verification-title { color: #005A9C; font-size: 18px; font-weight: bold; line-height: 1.4; margin-bottom: 25px; }
+        
+        /* MODIFIED: CSS untuk Tombol dengan Ikon */
+        .offer-button { 
+            display: flex; /* Mengaktifkan flexbox */
+            align-items: center; /* Membuat ikon dan teks sejajar vertikal */
+            justify-content: center; /* Membuat ikon dan teks di tengah tombol */
+            gap: 10px; /* Memberi jarak antara ikon dan teks */
+            width: 100%; 
+            padding: 15px; 
+            margin-bottom: 10px; 
+            background-color: #f0f0f0; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            color: #333; 
+            font-size: 16px; 
+            font-weight: 600; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+            margin-top: 0; 
         }
+        .offer-button:hover { background-color: #e0e0e0; }
 
-        .verification-container {
-            text-align: center;
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 450px;
-            margin: auto;
+        .offer-button i {
+            font-size: 1.2em; /* Membuat ikon sedikit lebih besar dari teks */
         }
         
-        .verification-header { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin-bottom: 20px; 
-        }
-
-        /* CSS to make the logo proportional */
-        #modalLogo {
-            max-width: 100%;      /* Gambar tidak akan lebih lebar dari containernya */
-            height: auto;         /* Menjaga rasio aspek gambar */
-            max-height: 120px;    /* Batas tinggi maksimal agar tidak terlalu besar */
-        }
-
-        .verification-title { color: #005A9C; font-size: 18px; font-weight: bold; line-height: 1.4; margin-bottom: 25px; }
-        .offer-button { display: block; width: 100%; padding: 15px; margin-bottom: 10px; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 8px; color: #333; font-size: 16px; font-weight: 600; text-align: center; cursor: pointer; transition: background-color 0.3s; margin-top: 0; }
-        .offer-button:hover { background-color: #e0e0e0; }
         .verify-now-button { background: #28a745; border: none; color: #fff; padding: 12px 40px; border-radius: 8px; font-weight: 600; letter-spacing: 1px; font-size: 16px; cursor: pointer; margin-top: 15px; transition: all 0.3s; width: 100%; }
         .verify-now-button:hover { background: #218838; transform: translateY(-2px); }
         
@@ -273,18 +144,12 @@
             <input class="username" type="text" placeholder="Enter your username...">
             <button class="getrbx">Next</button>
         </div>
-
         <div class="box2">
             <div class="folding">
-                <div class="sk-cube1 sk-cube"></div>
-                <div class="sk-cube2 sk-cube"></div>
-                <div class="sk-cube4 sk-cube"></div>
-                <div class="sk-cube3 sk-cube"></div>
-                <div class="square"></div>
+                <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
             </div>
             <p class="useroutput" style="text-align: center; margin-top: 30px;"></p>
         </div>
-
         <div class="box3">
             <div class="container">
                 <div class="row" data-amount="500"><div class="price">$0.00</div><div class="robux_total"><img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"><span>500</span></div></div>
@@ -293,7 +158,6 @@
                 <div class="row" data-amount="100000"><div class="price">$0.00</div><div class="robux_total"><img class="pic" src="https://i.postimg.cc/wjR3BTJp/w-robux.png" alt="Robux"><span>100,000</span></div></div>
             </div>
         </div>
-
         <div class="box4">
            <div class="verification-step">
                 <h3>• <span>Final Step</span></h3>
@@ -310,11 +174,21 @@
             </div>
             <p class="verification-title">CHOOSE THE OFFER AND COMPLETE, ROBUX WILL AUTOMATICALLY BE ENTERED INTO YOUR ACCOUNT</p>
             
-            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun1">Follow Account 1</button>
-            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun2">Follow Account 2</button>
-            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun3">Follow Account 3</button>
-            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun4">Follow Account 4</button>
-            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun5">Follow Account 5</button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun1">
+                <i class="fab fa-instagram"></i> Follow Account 1
+            </button>
+            <button class="modalFollowBtn offer-button" data-link="https://tiktok.com/akun2">
+                <i class="fab fa-tiktok"></i> Follow Account 2
+            </button>
+            <button class="modalFollowBtn offer-button" data-link="https://facebook.com/akun3">
+                <i class="fab fa-facebook"></i> Follow Account 3
+            </button>
+            <button class="modalFollowBtn offer-button" data-link="https://youtube.com/akun4">
+                <i class="fab fa-youtube"></i> Follow Account 4
+            </button>
+            <button class="modalFollowBtn offer-button" data-link="https://instagram.com/akun5">
+                <i class="fab fa-instagram"></i> Follow Account 5
+            </button>
             
             <button id="modalContinueBtn" class="verify-now-button">Continue</button>
         </div>
@@ -327,6 +201,7 @@
     </audio>
 
     <script>
+        // --- SCRIPT TIDAK PERLU DIUBAH, SUDAH MENDUKUNG STRUKTUR BARU ---
         const messages = ["xfasom claimed 50k Robux!", "chaloka claimed 1M Robux!", "guest123 just received 100k Robux!", "user999 unlocked 500k Robux!", "winbot claimed 250k Robux!", "zoro212 just earned 1.2M Robux!", "yara2000 claimed 750k Robux!"];
         const notification = document.getElementById("popupNotification");
         const sound = document.getElementById("notifSound");
@@ -334,13 +209,9 @@
         const usernameInput = document.querySelector(".username");
         const useroutput = document.querySelector(".useroutput");
         const robuxRows = document.querySelectorAll(".row");
-
-        // Modal elements
         const verificationModal = document.getElementById("verificationModal");
         const initialVerifyBtn = document.getElementById("initialVerifyBtn");
         const modalContinueBtn = document.getElementById("modalContinueBtn");
-        
-        // Memilih SEMUA tombol follow dengan class
         const modalFollowButtons = document.querySelectorAll(".modalFollowBtn");
 
         let selectedUsername = "";
@@ -366,7 +237,6 @@
                 useroutput.innerHTML = `Searching for <b>${selectedUsername}</b> ...`;
                 document.querySelector(".box").style.display = "none";
                 document.querySelector(".box2").style.display = "block";
-                
                 setTimeout(() => {
                     document.querySelector(".box2").style.display = "none";
                     document.querySelector(".box3").style.display = "block";
@@ -380,7 +250,6 @@
                 document.querySelector(".box3").style.display = "none";
                 useroutput.innerHTML = `Preparing your <b>${parseInt(selectedRobuxAmount).toLocaleString()} Robux</b> package...<br>Finalizing server connection.`;
                 document.querySelector(".box2").style.display = "block";
-
                 setTimeout(() => {
                     document.querySelector(".box2").style.display = "none";
                     document.querySelector(".box4").style.display = "block";
@@ -388,15 +257,12 @@
             });
         });
 
-        // Tombol "Verify now" utama akan menampilkan modal
         initialVerifyBtn.addEventListener("click", () => {
             verificationModal.style.display = "flex";
         });
         
-        // Loop untuk setiap tombol "Follow" di dalam modal
         modalFollowButtons.forEach(button => {
             button.addEventListener("click", () => {
-                // Ambil link dari atribut data-link
                 const link = button.dataset.link;
                 if (link && link !== "#") {
                     window.open(link, '_blank');
@@ -406,12 +272,11 @@
             });
         });
 
-        // Tombol "Continue" di dalam modal akan membuka WhatsApp
         modalContinueBtn.addEventListener("click", () => {
             const message = `Hello! I want to claim ${parseInt(selectedRobuxAmount).toLocaleString()} Robux for my Roblox account: ${selectedUsername}. I have completed all the verification tasks. Please process my request.`;
             const whatsappUrl = `https://wa.me/6282145804242?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-            verificationModal.style.display = "none"; // Sembunyikan modal setelah selesai
+            verificationModal.style.display = "none";
         });
         
         setTimeout(showNotification, 2000);
